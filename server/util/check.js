@@ -6,7 +6,7 @@ const openApiList = ['/api/login','/api/getArticle','/api/getArticleList']
 
 async function check(ctx,next){
 
-    if(openApiList.some((item)=>{return item == ctx.request.url})){
+    if(openApiList.some((item)=>{return item == ctx.request.url.split('?')[0]})){
         await next();
         return;
     }

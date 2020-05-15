@@ -2,8 +2,9 @@ const checkArgument = require('../util/checkArgument')
 const articlesModel = require('../models/articles')
 
 const getArticlesList = async(ctx,next) =>{
-    const data =  ctx.request.body;
-    if(!checkArgument(data,'classid') && !checkArgument(data,'labelid')){
+    
+    const data =  JSON.parse(JSON.stringify(ctx.request.query));
+    if((!checkArgument(data,'classid') && !checkArgument(data,'labelid') ) || !checkArgument(data,'page')){
         ctx.body = {
             error:400,
             msg:'传入的参数有误！'
@@ -27,7 +28,7 @@ const getArticlesList = async(ctx,next) =>{
 
 
 const getArticle = async (ctx,next)=>{
-    const data = ctx.request.body;
+    const data = ctx.request.query;
     if(!checkArgument(data,'id')){
         ctx.body = {
             error:400,
