@@ -13,7 +13,7 @@ const getArticlesList = function(values){
         arr=arr.map((item)=>{
             return 'labelid='+item;
         })
-        let insql = sql.Article.selectList + ' where classid='+values.classid+' and ('+arr.join(' or ')+') LIMIT '+head+','+size
+        let insql = sql.Article.selectList + ' where classid='+values.classid+` and INSTR(labelid,"${values.labelid}")  LIMIT `+head+','+size
         return read(insql)
     } else if(values.hasOwnProperty('classid')){
         //查询classid
@@ -25,7 +25,7 @@ const getArticlesList = function(values){
         arr=arr.map((item)=>{
             return 'labelid='+item;
         })
-        let insql = sql.Article.selectList + ' where '+arr.join(' or ')+' LIMIT '+head+','+size
+        let insql = sql.Article.selectList + ` where INSTR(labelid,"${values.labelid}")`+' LIMIT '+head+','+size
         return read(insql)
     } else {
         return read(sql.Article.selectList+' LIMIT '+head+','+size)
@@ -43,11 +43,15 @@ const delArticles = function(values){
 const updateArticle = function(values){
     return read(sql.Article.update,[values.title,values.time,values.content,values.classid,values.labelid,values.id])
 }
+const getArticlesTotle = function(){
+    return read(sql.Article.selectTotle)
+}
 
 module.exports = {
     addArticles,
     getArticlesList,
     getArticlesDetail,
     delArticles,
-    updateArticle
+    updateArticle,
+    getArticlesTotle
 }

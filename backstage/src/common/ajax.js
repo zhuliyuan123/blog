@@ -66,7 +66,7 @@ export const createRequestFunc = (sourceMap, apiURL)=>{
         let params = body;
         const response = await ajax[method](`${apiURL}${path}`,method === 'get'? {params} : Qs.stringify(params))
         if(response.status == 200){
-          if(response.data.code == 0){
+          if(response.data.error == 0){
             return Promise.resolve(response.data)
           }else{  
             if(response.data.error == 501){
@@ -77,7 +77,7 @@ export const createRequestFunc = (sourceMap, apiURL)=>{
             }else{
               errorTip(response.data.msg,2000)
               return Promise.reject({
-                code:response.data.code,
+                code:response.data.error,
                 message:response.data.msg
               })
             }

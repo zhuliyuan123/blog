@@ -2,7 +2,7 @@ const Promise = require("bluebird");
 const jwt = require("jsonwebtoken");
 const verify = Promise.promisify(jwt.verify);
 const config = require('../config/default');
-const openApiList = ['/api/login','/api/getArticle','/api/getArticleList']
+const openApiList = ['/api/login','/api/getArticle','/api/getArticleList','/api/getArticleTotle']
 
 async function check(ctx,next){
 

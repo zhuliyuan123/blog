@@ -27,6 +27,11 @@ const login = async(ctx,next) => {
                     msg:'登录成功！',
                     data:token
                 }
+            }else{
+                ctx.body = {
+                    error:404,
+                    msg:'密码错误！'
+                }
             }
         }
     }catch(err){

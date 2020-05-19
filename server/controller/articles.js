@@ -26,9 +26,25 @@ const getArticlesList = async(ctx,next) =>{
     }
 }
 
+const getArticleTotle = async (ctx,next)=>{
+    try{
+        const result = await articlesModel.getArticlesTotle();
+        ctx.body = {
+            error:0,
+            msg:'查询成功',
+            data:result[0]['COUNT(*)']
+        }
+    }catch(error){
+        ctx.body = {
+            error:500,
+            msg:err.toString()
+        }
+    }
+}
+
 
 const getArticle = async (ctx,next)=>{
-    const data = ctx.request.query;
+    const data = JSON.parse(JSON.stringify(ctx.request.query));
     if(!checkArgument(data,'id')){
         ctx.body = {
             error:400,
@@ -143,6 +159,7 @@ module.exports = {
     getArticle,
     addArticle,
     delArticle,
-    updateArticle
+    updateArticle,
+    getArticleTotle
     
 }

@@ -1,8 +1,8 @@
 const read = require('./mysql')
 const sql = require('../config/sqlMap')
 
-const getLabelList = function(){
-    return read(sql.Label.select)
+const getLabelList = function(values){
+    return read(sql.Label.select+' where classid='+values)
 }
 
 const addLabel = function(values){

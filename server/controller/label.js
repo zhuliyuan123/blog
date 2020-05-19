@@ -2,8 +2,16 @@ const checkArgument = require('../util/checkArgument')
 const labelModel = require('../models/label')
 
 const getLabelList = async(ctx,next) =>{
+    const data = JSON.parse(JSON.stringify(ctx.request.query));
+    if(!checkArgument(data,'classid')){
+        ctx.body = {
+            error:400,
+            msg:'传入的参数有误！'
+        }
+        return;
+    }
     try{
-        const result = await labelModel.getLabelList();
+        const result = await labelModel.getLabelList(data.classid);
         ctx.body = {
             error:0,
             msg:'获取成功！',
@@ -83,17 +91,13 @@ const updateLabel = async(ctx,next)=>{
                 error:0,
                 msg:'修改成功！'
             }
-
         }
-
     }catch(error){
         ctx.body = {
             error:500,
             msg:error.toString()
         }
     }
-
-
 }
 
 

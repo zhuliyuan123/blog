@@ -22,8 +22,11 @@ const article = {
     updateArticle:{
         path:'/updateArticle',
         method:'post'
+    },
+    getArticleTotle:{
+        path:'/getArticleTotle',
+        method:'get'
     }
-
 }
 
 

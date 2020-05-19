@@ -1,7 +1,8 @@
 const sqlMap = {
     Article:{
         select:'select * from articles',
-        selectList:'select title,time,classid,labelid from articles',
+        selectList:'select id,title,time,classid,labelid from articles',
+        selectTotle:'SELECT COUNT(*) FROM articles',
         del:'DELETE FROM articles',
         add:'insert into articles (classid, title, time, content, labelid) values (?,?,?,?,?)',
         update:'update articles set title= ? ,time= ? ,content= ? ,classid= ?,labelid= ? WHERE id = ?'
