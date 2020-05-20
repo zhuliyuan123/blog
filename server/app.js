@@ -6,14 +6,26 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const check = require('./util/check')
+const cors = require('koa2-cors')
 
 
 const api = require('./routes/api')
+app.use(async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Methods', '*');
+  ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type, Authorization");
+  if (ctx.method == 'OPTIONS') {
+    ctx.body = 200; 
+  } else {
+    await next();
+  }
+ });
 
 // error handler
 onerror(app)
 
 // middlewares
+
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
