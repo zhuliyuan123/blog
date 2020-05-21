@@ -71,9 +71,8 @@ export default {
     .content{
         width: 800px;
         min-height: 700px;
-        padding: 20px 50px 0 50px;
+        padding: 20px 50px 20px 50px;
         margin: 10px auto 0 auto;
-        background-color: #e1e1e1;
     }
 }
 </style>

@@ -1,7 +1,7 @@
 /*
     markdown style  <cn_brian@163.com>
 */
-.detail_content pre {
+.detail pre {
     padding: 1rem 1rem;
     background: #F3F3F3;
     overflow: auto;
@@ -9,6 +9,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     text-align: left;
+    margin: 1rem 0 1rem 0;
   }
   p > code,
   h1 > code,
