@@ -11,9 +11,9 @@ const getArticlesList = function(values){
         // classid 和 labelid 查询
         let arr = values.labelid.split(',')
         arr=arr.map((item)=>{
-            return 'labelid='+item;
+            return  `AND FIND_IN_SET(${item},labelid)`;
         })
-        let insql = sql.Article.selectList + ' where classid='+values.classid+` and INSTR(labelid,"${values.labelid}")  LIMIT `+head+','+size
+        let insql = sql.Article.selectList + ' where classid='+values.classid+' '+arr.join(' ')+`  LIMIT `+head+','+size
         return read(insql)
     } else if(values.hasOwnProperty('classid')){
         //查询classid
@@ -23,9 +23,9 @@ const getArticlesList = function(values){
         //查询labelid
         let arr = values.labelid.split(',')
         arr=arr.map((item)=>{
-            return 'labelid='+item;
+            return  `AND FIND_IN_SET(${item},labelid)`;
         })
-        let insql = sql.Article.selectList + ` where INSTR(labelid,"${values.labelid}")`+' LIMIT '+head+','+size
+        let insql = sql.Article.selectList + ` where `+arr.join(' ')+' LIMIT '+head+','+size
         return read(insql)
     } else {
         return read(sql.Article.selectList+' LIMIT '+head+','+size)
