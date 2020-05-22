@@ -105,15 +105,17 @@ export default {
             }
         },
         async seach() {
+            console.log(this.labelid == [])
             try {
                 let data =
-                    this.labelid == []
+                    this.labelid.length == 0
                         ? { page: this.page, classid: this.classid }
                         : {
                               page: this.page,
                               classid: this.classid,
                               labelid: this.labelid.join(","),
                           };
+                console.log(data)
                 const result = await this.$http.article.getArticleList(data);
                 this.articleList = result.data;
                 this.getTotle();
