@@ -8,7 +8,7 @@ module.exports = {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0'},
       { hid: 'description', name: 'description', content: process.env.npm_package_description || 'julian的个人博客' }
     ],
     link: [
@@ -38,7 +38,7 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules:['@nuxtjs/axios'],
+  modules:[],
   loader:[
     {
       test:/\.scss$/,
@@ -53,7 +53,17 @@ module.exports = {
     ** You can extend webpack config here
     */
     vendor:['axios'],
-    extend (config, ctx) {
+    postcss:{
+      plugins: {
+        'autoprefixer':{
+          overrideBrowserslist: ['iOS >= 7', 'Android >= 4','ie >= 8']
+        },
+        'postcss-pxtorem':{
+          rootValue: 32,
+          propWhiteList: ['*'],
+        }
+      }
     }
+
   }
 }

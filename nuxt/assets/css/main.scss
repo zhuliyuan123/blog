@@ -2,3 +2,70 @@
     padding: 0;
     margin: 0;
 }
+
+html{
+    margin: 0px;
+    padding: 0px;
+    font-size: 16PX!important;
+    
+    width: 100%;
+    background-color: #3d5581;
+
+}
+body{
+    line-height: 1;
+    margin: 0px;
+    padding: 0px;
+    margin: 0 auto;
+    width: 100%;
+}
+ul,li{ padding:0;margin:0;list-style:none}
+a{
+  text-decoration:none;
+}
+
+@media screen and (min-width: 768px) {
+    html{
+        font-size: 20PX!important;
+        background-color: white;
+    }
+    .container{
+        width: 750px!important;
+        margin: 0 auto;
+    }
+    .head-main{
+        width: 750px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 414px) {
+    html{
+        font-size: 16.96PX!important;
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    html{
+        font-size: 20PX!important;
+    }
+    .container{
+        width: 750px!important;
+        margin: 0 auto;
+    }
+    .head-main{
+        width: 750px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 414px) {
+    html{
+        font-size: 16.96PX!important;
+    }
+}

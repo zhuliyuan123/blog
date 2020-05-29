@@ -1,45 +1,136 @@
 <template>
-<div>
-
+<div style="position: relative;">
+  <Header :showback="false"></Header>
+  <div class="app">
+      <div class="main">
+        <img class="pic" src="../assets/images/my.jpg" alt="">
+      </div>
+      <div class="choose">
+        <nuxt-link :to="{name:'list-id',params:{id:1}}" class="btn">
+            <img src="../assets/images/one.jpg" alt="">
+            <div class="mark">
+              <h2>技术文档</h2>
+            </div>
+        </nuxt-link>
+        <nuxt-link :to="{name:'list-id',params:{id:2}}" class="btn">
+          <img src="../assets/images/two.jpg" alt="">
+          <div class="mark">
+            <h2>生活记录</h2>
+          </div>
+        </nuxt-link>
+        <nuxt-link :to="{name:'list-id',params:{id:3}}" class="btn">
+          <img src="../assets/images/four.jpg" alt="">
+          <div class="mark">
+            <h2>旅行游记</h2>
+          </div>
+        </nuxt-link>
+        <nuxt-link :to="{name:'about'}" class="btn">
+          <img src="../assets/images/five.jpg" alt="">
+          <div class="mark">
+            <h2>个人简介</h2>
+          </div>
+        </nuxt-link>
+      </div>
+  </div>
+  <div class="bank"></div>
+  <div class="foot" style="bottom:0;">粤ICP备19144854号-1</div>
 </div>
 </template>
 
 <script>
+import Header from '../components/Header'
 export default {
+  components: {
+    Header
+  }
 
 
 }
 </script>
+<style lang="scss" scoped>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+.app{
+  width: 100%;
+}
+.choose{
+  width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap:wrap;
+  padding-bottom: 35px;
+  
+
+  .btn{
+    width: 45%;
+    margin: 50px auto 0px auto;
+    border: 2px solid white;
+    cursor: pointer;
+    position: relative;
+    .mark{
+      position: absolute;
+      top:0px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      font-size: 1rem;
+      h2{
+        text-align: center;
+        color: white;
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+      }
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.foot{
+  height: 100px;
+  line-height: 100px;
   text-align: center;
+  color: white;
+  width: 100%;
+  background-color: #3d5581;
+}
+.bank{
+  height: 100px;
+  background-color: #3d5581;
+
+}
+.main{
+  width: 100%;
+  margin-top: 100px;
+  background-color: white;
+  .pic{
+    position: relative;
+    width: 80%;
+    margin: 50px auto 50px auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+}
+.me{
+  width: 200px;
+  height: 50px;
+  background-color: red;
+  border: 1px solid red;
+}
+@media screen and (min-width: 768px) {
+    .app{
+      width: 750Px;
+      margin: 0 auto 0 auto;
+      background-color: #3d5581;
+    }
+    .foot{
+      position: fixed;
+    }
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
