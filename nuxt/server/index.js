@@ -14,9 +14,8 @@ async function start () {
 
   const {
     host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
+    port = process.env.PORT || 3001
   } = nuxt.options.server
-
   await nuxt.ready()
   // Build in development
   if (config.dev) {
@@ -30,7 +29,6 @@ async function start () {
     ctx.req.ctx = ctx // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
     nuxt.render(ctx.req, ctx.res)
   })
-
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,

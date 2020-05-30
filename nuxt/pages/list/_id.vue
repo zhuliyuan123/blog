@@ -9,18 +9,23 @@
             <div class="label-item" :class="{active:labelid.includes(item.id)}" @click="choose(item.id)" v-for="item in labelList" :key="item.id">{{item.labelname}}</div>
         </div>
         <div class="list-content">
-            <div class="list-content-item" v-for="item in artList" :key="item.id">
+            <div class="list-content-item" @click="details(item.id)" v-for="item in artList" :key="item.id">
                 <div class="title">{{item.title}}</div>
                 <div class="item-foot">{{changeTime(item.time)}}</div>
             </div>
+            <div class="no-content" v-if="artList.length === 0">
+                暂无内容,敬请期待
+            </div>
         </div>
     </div>
+    <Foot></Foot>
 </div>
 </template>
 
 <script>
 import Header from '../../components/Header'
 import Axios from 'axios'
+import Foot from '../../components/Foot'
 export default {
     async asyncData ({app,params}) {
         let json = {classid:params.id}
@@ -32,6 +37,18 @@ export default {
         }catch(error){
             console.log(error)
         }
+    },
+
+    head:{
+        title:'竹立站',
+        meta:[
+            { charset:'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { hid: 'description', name: 'description', content: '朱笠源;个人博客;前端;'}
+        ],
+        link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+        ]
     },
     data(){
         return{
@@ -72,10 +89,19 @@ export default {
             }
             const res = await Axios.get('http://api.zhuliyuan123.com/api/getArticleList',{params:json});
             this.artList = res.data.data;
+        },
+        details(n){
+            this.$router.push({
+                name:'details-id',
+                params:{
+                    id:n
+                }
+            })
         }
     },
     components: {
-        Header
+        Header,
+        Foot
     }
     
 
@@ -87,6 +113,18 @@ export default {
 }
 .ls{
     top:100px;
+}
+.no-content{
+    width: 80%;
+    margin: 40px auto 0 auto;
+    border-radius: 20px;
+    font-size: 30px;
+    line-height: 200px;
+    text-align: center;
+    background-color: white;
+    height: 200px;
+    font-weight: 600;
+    color:#3d5581;
 }
 .label-content{
     padding: 20px 20px 20px 20px;
@@ -120,6 +158,7 @@ export default {
         border-radius: 20px;
         margin: 20px auto 0 auto;
         background-color: white;
+        cursor: pointer;
         .title{
             font-size: 36px;
             font-weight: 500;
@@ -133,6 +172,23 @@ export default {
             display: flex;
             padding-bottom: 20px;
         }
+    }
+}
+@media screen and (min-width: 768px) {
+    .main{
+      width: 750Px;
+      margin: 0 auto 0 auto;
+      margin-top: 100px;
+      .label-content{
+          width: 750Px;
+      }
+      .list-content-item{
+          border: 1px solid #3d5581;
+          
+      }
+      .no-content{
+          border: 1px solid #3d5581;
+      }
     }
 }
 </style>

@@ -12,13 +12,13 @@
               <h2>技术文档</h2>
             </div>
         </nuxt-link>
-        <nuxt-link :to="{name:'list-id',params:{id:2}}" class="btn">
+        <nuxt-link :to="{name:'list-id',params:{id:6}}" class="btn">
           <img src="../assets/images/two.jpg" alt="">
           <div class="mark">
             <h2>生活记录</h2>
           </div>
         </nuxt-link>
-        <nuxt-link :to="{name:'list-id',params:{id:3}}" class="btn">
+        <nuxt-link :to="{name:'list-id',params:{id:7}}" class="btn">
           <img src="../assets/images/four.jpg" alt="">
           <div class="mark">
             <h2>旅行游记</h2>
@@ -31,20 +31,30 @@
           </div>
         </nuxt-link>
       </div>
+      <Foot></Foot>
   </div>
-  <div class="bank"></div>
-  <div class="foot" style="bottom:0;">粤ICP备19144854号-1</div>
 </div>
 </template>
 
 <script>
 import Header from '../components/Header'
+import Foot from '../components/Foot'
 export default {
   components: {
-    Header
+    Header,
+    Foot
+  },
+  head:{
+    title:'竹立站',
+    meta:[
+      { charset:'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '朱笠源;个人博客;前端;技术文档;'}
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+    ]
   }
-
-
 }
 </script>
 <style lang="scss" scoped>
@@ -61,6 +71,7 @@ export default {
   display: flex;
   flex-wrap:wrap;
   padding-bottom: 35px;
+  
   
 
   .btn{

@@ -11,9 +11,6 @@ module.exports = {
       { name: 'viewport', content: 'maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0'},
       { hid: 'description', name: 'description', content: process.env.npm_package_description || 'julian的个人博客' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
   },
   /*
   ** Customize the progress-bar color
@@ -30,6 +27,9 @@ module.exports = {
   plugins: [
     '~/plugins/axios'
   ],
+  server:{
+    port:3001,
+  },
   /*
   ** Nuxt.js dev-modules
   */
