@@ -5,7 +5,7 @@ module.exports = {
       open: true,
       proxy: {
         "/api": {
-          target: "http://localhost:3000",
+          target: "http://api.zhuliyuan123.com",
           changeOrigin: true
         },
       }

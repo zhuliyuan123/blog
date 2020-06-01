@@ -89,7 +89,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .publish {
-    width: 100%;
+    width: 95%;
+    margin: 0 auto 0 auto;
     .option {
         width: 100%;
         display: flex;

@@ -248,7 +248,8 @@ export default {
 
 <style lang="scss" scoped>
 .setting{
-    width: 100%;
+    width: 95%;
+    margin: 0 auto 0 auto;
     .content{
         width: 100%;
         margin: 10px auto 0 auto;

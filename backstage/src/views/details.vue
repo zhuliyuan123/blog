@@ -2,23 +2,12 @@
 <div class="detail">
     <div class="title">{{title}}</div>
     <div class="time">{{showTime}}</div>
-    <div class="content" v-highlight v-html="content"></div>
+    <MarkdownPreview  theme="dark" class="content" :initialValue="content"></MarkdownPreview>
 </div>
 </template>
 
 <script>
-var marked = require('marked');
-import hljs from "highlight.js";
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: false,
-});
+import {MarkdownPreview } from 'vue-meditor'
 export default {
     name:'detail',
     data(){
@@ -28,6 +17,9 @@ export default {
             content:'',
             time:'',
         }
+    },
+    components:{
+        MarkdownPreview
     },
     created () {
         this.id = this.$route.params.id;
@@ -46,7 +38,7 @@ export default {
                     id:this.id
                 })
                 this.title = result.data.title;
-                this.content = marked(result.data.content);
+                this.content =result.data.content;
                 this.time = result.data.time;
             }catch(error){
                 console.log(error)
@@ -59,20 +51,30 @@ export default {
 <style lang="scss" scoped>
 .detail{
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     .title{
         text-align: center;
         font-size: 20px;
         font-weight: 600;
+        height: 30px;
+        line-height: 30px;
     }
     .time{
-        margin-top: 20px;
+        height: 30px;
+        padding-top: 20px;
         text-align: center;
+        padding-bottom: 20px;
+        line-height: 30px;
     }
     .content{
         width: 800px;
-        min-height: 700px;
-        padding: 20px 50px 20px 50px;
-        margin: 10px auto 0 auto;
+        flex: 1;
+        overflow: auto;
+        margin: 0px auto 0px auto;
+        padding-bottom: 20px;
     }
 }
 </style>
