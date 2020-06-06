@@ -31,8 +31,8 @@
           </div>
         </nuxt-link>
       </div>
-      <Foot></Foot>
   </div>
+  <Foot></Foot>
 </div>
 </template>
 

@@ -141,6 +141,7 @@ export default {
         border: 1px solid #3d5581;
         color: #3d5581;
         border-radius:  5px;
+        cursor: pointer;
         margin: 10px 10px 10px 10px;
         padding: 0 20px 0 20px;
     }
