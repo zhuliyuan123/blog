@@ -1,0 +1,16 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "竹立站"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "竹立站",
+		"navigationBarBackgroundColor": "#3d5581",
+		"backgroundColor": "#F8F8F8"
+	}
+}

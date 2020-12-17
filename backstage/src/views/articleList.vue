@@ -58,7 +58,8 @@
         <el-pagination
             background
             layout="prev, pager, next"
-            :total="total">
+            :total="total"
+            @current-change="changePage">
         </el-pagination>
     </div>
 </template>
@@ -105,7 +106,6 @@ export default {
             }
         },
         async seach() {
-            console.log(this.labelid == [])
             try {
                 let data =
                     this.labelid.length == 0
@@ -115,7 +115,6 @@ export default {
                               classid: this.classid,
                               labelid: this.labelid.join(","),
                           };
-                console.log(data)
                 const result = await this.$http.article.getArticleList(data);
                 this.articleList = result.data;
                 this.getTotle();
@@ -189,6 +188,10 @@ export default {
                     id:id
                 }
             })
+        },
+        changePage(n){
+            this.page = n;
+            this.seach();
         }
     },
     created() {
