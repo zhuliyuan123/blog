@@ -13,7 +13,7 @@
                 <el-button type="primary" style="width:200px;margin-left:70px;" size="medium" @click="submitForm('form')">登录</el-button>
             </el-form-item>
         </el-form>
-        <div class="number">粤ICP备19144854号-1</div>
+        <a class="number" href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19144854号-1</a>
     </div>
 </div>
 </template>

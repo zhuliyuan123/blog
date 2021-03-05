@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="bank"></div>
-    <div class="foot">粤ICP备19144854号-1</div>
+    <a class="foot" href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19144854号-1</a>
 </div>
 </template>
 
